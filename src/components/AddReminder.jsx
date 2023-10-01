@@ -70,7 +70,7 @@ function AddReminder({setChangeDate, dateSelected}) {
       setWarnings(0)
     }
   },[description,title,time])
-  console.log(warnings)
+
   return (
     <>
         <form className="form-container" onSubmit={handleSubmit}>

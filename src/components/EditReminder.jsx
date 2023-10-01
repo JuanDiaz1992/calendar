@@ -59,30 +59,29 @@ function EditReminder({setChangeDate, dataToModify }) {
 
   const deleteReminder=()=>{
     dispatch(eliminarObjeto(indice))
+    toast.error('Reminder deleted')
     setChangeDate(true);
   }
   useEffect(()=>{
     if (description.length>=300) {
       setWarnings(2)
       setIsFormOk(false)
-    }else if (title.length>=15) {
+    }else if (title.length>=20) {
       setWarnings(1)
       setIsFormOk(false)
     }else if (time.length<5) {
       setIsFormOk(false)
-    }
-    else if (description.length>3 && title.length>3) {
-      setIsFormOk(true)
+      setWarnings(3)
     }
     else{
-      setWarnings(0)
       setIsFormOk(true)
+      setWarnings(0)
     }
   },[description,title,time])
   return (
     <>
       <form className="form-container" onSubmit={handleSubmit}>
-        <div className={"warninDefault "+(warnings===1? "warning2":"noWarning")} >
+        <div className={"warninDefault "+(warnings===1? "warning":"noWarning")} >
             <p>In this field, you can only include 15 characters.</p>
           </div>
         <div className="form-group">
@@ -96,7 +95,7 @@ function EditReminder({setChangeDate, dataToModify }) {
             required
           />
         </div>
-        <div className={"warninDefault "+(warnings===2? "warning2":"noWarning")} >
+        <div className={"warninDefault "+(warnings===2? "warning":"noWarning")} >
             <p>In this field, you can only include 300 characters.</p>
           </div>
         <div className="form-group">
