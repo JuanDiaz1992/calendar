@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { agregarObjeto, eliminarObjeto} from "../redux/userSlice";
+import { agregarObjeto, eliminarObjeto } from "../redux/userSlice";
 import { useSelector } from "react-redux";
-import { toast } from "react-hot-toast"
+import { toast } from "react-hot-toast";
 import "../styles/AddReminder.css";
 
-function EditReminder({setChangeDate, dataToModify }) {
-  const [warnings,setWarnings] = useState(0)
-  const [isFormOk,setIsFormOk] = useState(false)
+function EditReminder({ setChangeDate, dataToModify }) {
+  const [warnings, setWarnings] = useState(0);
+  const [isFormOk, setIsFormOk] = useState(false);
 
   const reminders = useSelector((state) => state.reminders.objects);
-  const indice = reminders.findIndex((element) => element.id === dataToModify.id);
+  const indice = reminders.findIndex(
+    (element) => element.id === dataToModify.id
+  );
   const [title, setTitle] = useState(dataToModify.title);
   const [description, setDescription] = useState(dataToModify.description);
   const [date, setDate] = useState(dataToModify.date);
@@ -31,59 +33,59 @@ function EditReminder({setChangeDate, dataToModify }) {
     "BCAAA4",
   ];
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
       if (isFormOk) {
         dispatch(
           agregarObjeto({
-            "title": title,
-            "description": description,
-            "date": date,
-            "time": time,
-            "color": color,
-            "id": dataToModify.id
+            title: title,
+            description: description,
+            date: date,
+            time: time,
+            color: color,
+            id: dataToModify.id,
           })
         );
-        dispatch(eliminarObjeto(indice))
-        setChangeDate(true)
-        toast.success('Reminder edited successfully')
+        dispatch(eliminarObjeto(indice));
+        setChangeDate(true);
+        toast.success("Reminder edited successfully");
       }
-
-;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const deleteReminder=()=>{
-    dispatch(eliminarObjeto(indice))
-    toast.error('Reminder deleted')
+  const deleteReminder = () => {
+    dispatch(eliminarObjeto(indice));
+    toast.error("Reminder deleted");
     setChangeDate(true);
-  }
-  useEffect(()=>{
-    if (description.length>=300) {
-      setWarnings(2)
-      setIsFormOk(false)
-    }else if (title.length>=20) {
-      setWarnings(1)
-      setIsFormOk(false)
-    }else if (time.length<5) {
-      setIsFormOk(false)
-      setWarnings(3)
+  };
+  useEffect(() => {
+    if (description.length >= 300) {
+      setWarnings(2);
+      setIsFormOk(false);
+    } else if (title.length >= 20) {
+      setWarnings(1);
+      setIsFormOk(false);
+    } else if (time.length < 5) {
+      setIsFormOk(false);
+      setWarnings(3);
+    } else {
+      setIsFormOk(true);
+      setWarnings(0);
     }
-    else{
-      setIsFormOk(true)
-      setWarnings(0)
-    }
-  },[description,title,time])
+  }, [description, title, time]);
   return (
     <>
       <form className="form-container" onSubmit={handleSubmit}>
-        <div className={"warninDefault "+(warnings===1? "warning":"noWarning")} >
-            <p>In this field, you can only include 15 characters.</p>
-          </div>
+        <div
+          className={
+            "warninDefault " + (warnings === 1 ? "warning" : "noWarning")
+          }
+        >
+          <p>In this field, you can only include 15 characters.</p>
+        </div>
         <div className="form-group">
           <label>Title</label>
           <input
@@ -95,9 +97,13 @@ function EditReminder({setChangeDate, dataToModify }) {
             required
           />
         </div>
-        <div className={"warninDefault "+(warnings===2? "warning":"noWarning")} >
-            <p>In this field, you can only include 300 characters.</p>
-          </div>
+        <div
+          className={
+            "warninDefault " + (warnings === 2 ? "warning" : "noWarning")
+          }
+        >
+          <p>In this field, you can only include 300 characters.</p>
+        </div>
         <div className="form-group">
           <label>Description</label>
           <textarea
@@ -153,9 +159,14 @@ function EditReminder({setChangeDate, dataToModify }) {
         </div>
         <hr />
         <div className="buttons buttons_whit_delete">
-          <button onClick={deleteReminder} className="button_remove" type="button">Remove</button>
+          <button
+            onClick={deleteReminder}
+            className="button_remove"
+            type="button"
+          >
+            Remove
+          </button>
           <div>
-
             <button
               className="button_cancel"
               onClick={() => {
@@ -167,7 +178,6 @@ function EditReminder({setChangeDate, dataToModify }) {
             </button>
             <button type="submit">Save</button>
           </div>
-
         </div>
       </form>
     </>

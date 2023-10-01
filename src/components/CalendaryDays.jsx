@@ -4,8 +4,7 @@ import rigth from "../img/right.svg";
 import left from "../img/left.svg";
 import center from "../img/center.svg";
 import point from "../img/point-reminder.svg";
-import { useSelector } from "react-redux"
-
+import { useSelector } from "react-redux";
 
 function CalendaryDays(props) {
   const calendar2023 = {
@@ -82,21 +81,22 @@ function CalendaryDays(props) {
     "December",
   ];
 
-  const [activeReminder,setActiveReminder] = useState(false)
+  const [activeReminder, setActiveReminder] = useState(false);
   const currentDate = new Date();
-  const day = currentDate.getDate()
+  const day = currentDate.getDate();
   const currentMonth = currentDate.getMonth();
   const year = currentDate.getFullYear();
   const [daysOfMonth, setDaysOfMonth] = useState([]);
   const [numberMonth, setNumberMont] = useState(currentMonth); //brings the month by array position
   const [selectedMonth, setMonth] = useState(months[numberMonth]); //select the month in the array depending on the variable numberMonth
-  const [selectedDay,setSelectedDay] = useState({numberDay:day, numberMonth:numberMonth})
+  const [selectedDay, setSelectedDay] = useState({
+    numberDay: day,
+    numberMonth: numberMonth,
+  });
   const selectedMonthInfo = calendar2023[selectedMonth];
   const { days, firstDayOfWeek } = selectedMonthInfo;
   const firstDayIndex = daysOfWeek.indexOf(firstDayOfWeek);
   const reminders = useSelector((state) => state.reminders.objects);
-
-
 
   const selectMonth = (select) => {
     if (select === "+" && numberMonth < 11) {
@@ -111,21 +111,15 @@ function CalendaryDays(props) {
     }
   };
 
-
-
-  const selectDay=(day)=>{
-    if (day!==null && day.numberDay>=0 ) {
-      day.yearFull = year
-      day.number=daysOfWeek.indexOf(day.dayOfWeek)
-      setSelectedDay(day)
-      props.setDate(day)
-      props.setChangeDate(true)
+  const selectDay = (day) => {
+    if (day !== null && day.numberDay >= 0) {
+      day.yearFull = year;
+      day.number = daysOfWeek.indexOf(day.dayOfWeek);
+      setSelectedDay(day);
+      props.setDate(day);
+      props.setChangeDate(true);
     }
-
-
-
-  }
-
+  };
 
   useEffect(() => {
     const generateDaysOfMonth = () => {
@@ -143,8 +137,10 @@ function CalendaryDays(props) {
         "11",
         "12",
       ];
-      const dateSelecter = year + "-" + numberMounth[numberMonth]
-      const remindersDaySelected = reminders.filter( (reminder) => reminder.date.startsWith(dateSelecter));
+      const dateSelecter = year + "-" + numberMounth[numberMonth];
+      const remindersDaySelected = reminders.filter((reminder) =>
+        reminder.date.startsWith(dateSelecter)
+      );
 
       const newDays = [{}];
       for (let i = 0; i < firstDayIndex; i++) {
@@ -153,25 +149,28 @@ function CalendaryDays(props) {
       for (let i = 1; i <= days; i++) {
         const day = i;
         const dayOfWeek = daysOfWeek[(i + firstDayIndex) % 7];
-        let doeshavereminder = remindersDaySelected.some(dayWhitReminder => dayWhitReminder.date.endsWith(day));
-        newDays.push({ numberDay: day, dayOfWeek, numberMonth, doeshavereminder });
+        let doeshavereminder = remindersDaySelected.some((dayWhitReminder) =>
+          dayWhitReminder.date.endsWith(day)
+        );
+        newDays.push({
+          numberDay: day,
+          dayOfWeek,
+          numberMonth,
+          doeshavereminder,
+        });
       }
       setDaysOfMonth(newDays);
     };
     generateDaysOfMonth();
-    
+
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [days, firstDayIndex, selectedMonth, selectedDay, props.changeDate]);
-
-
-
 
   return (
     <div className="calendary_container">
       <div className="calendary_container--header">
         <h1>{year}</h1>
         <h2>{selectedMonth[0].toUpperCase() + selectedMonth.substring(1)}</h2>
-
       </div>
       <div>
         <div className="buttons_navigate--container">
@@ -203,10 +202,26 @@ function CalendaryDays(props) {
         </div>
         <div className="days">
           {daysOfMonth.map((day, index) => (
-            <div onClick={!day? ()=>selectDay(null) : ()=>selectDay(day)} key={index} className={!day? "" : day.numberDay === selectedDay.numberDay && day.numberMonth === selectedDay.numberMonth  ? "day days_select" : "day"}>
-                {day ? day.numberDay : ""}
-              {!day? <></> : day.doeshavereminder? <img src={point} alt="point" className="notification_pot" /> : <></>}
-              
+            <div
+              onClick={!day ? () => selectDay(null) : () => selectDay(day)}
+              key={index}
+              className={
+                !day
+                  ? ""
+                  : day.numberDay === selectedDay.numberDay &&
+                    day.numberMonth === selectedDay.numberMonth
+                  ? "day days_select"
+                  : "day"
+              }
+            >
+              {day ? day.numberDay : ""}
+              {!day ? (
+                <></>
+              ) : day.doeshavereminder ? (
+                <img src={point} alt="point" className="notification_pot" />
+              ) : (
+                <></>
+              )}
             </div>
           ))}
         </div>
