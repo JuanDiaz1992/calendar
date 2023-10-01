@@ -81,7 +81,6 @@ function CalendaryDays(props) {
     "December",
   ];
 
-  const [activeReminder, setActiveReminder] = useState(false);
   const currentDate = new Date();
   const day = currentDate.getDate();
   const currentMonth = currentDate.getMonth();
@@ -150,7 +149,7 @@ function CalendaryDays(props) {
         const day = i;
         const dayOfWeek = daysOfWeek[(i + firstDayIndex) % 7];
         let doeshavereminder = remindersDaySelected.some((dayWhitReminder) =>
-          dayWhitReminder.date.endsWith(day)
+          dayWhitReminder.date.slice(-2) === (day <=9? "0" + day : day.toString() ) 
         );
         newDays.push({
           numberDay: day,

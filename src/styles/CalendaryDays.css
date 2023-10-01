@@ -90,3 +90,21 @@
     top: 2px;
     right: 1px;
 }
+
+
+@media only screen and (max-width: 1166px), only screen and (max-height: 828px) {
+    .calendary_container--header h1 {
+        font-size: 59px;
+    }
+    .calendary_container--header h2 {
+        font-size: 32px;
+    }
+    }
+
+    .days{
+        grid-column-gap: 2px;
+        grid-row-gap: 2px;
+    }
+    .days-of-week{
+        grid-column-gap: 2px;
+    }

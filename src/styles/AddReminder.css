@@ -157,3 +157,9 @@
   .warning{
     display: inline;
   }
+
+  @media only screen and (max-width: 1166px), only screen and (max-height: 828px) {
+    .form-group textarea{
+      height: 33px;
+    }
+    }

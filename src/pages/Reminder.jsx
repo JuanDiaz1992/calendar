@@ -132,45 +132,47 @@ function Reminder() {
 
   return (
     <>
-      <section className="section_container">
+      <section>
         <img className="logo" src={logo} alt="logo" />
-        <div className="section_container--div1">
-          <div className="section_container--div1--button_container">
-            <p>
-              {numberOption === 1
-                ? "Add reminder - "
-                : numberOption === 2
-                ? "Edit reminder - "
-                : ""}
-              {daysOfWeek[date.number] +
-                ", " +
-                months[date.numberMonth] +
-                ", " +
-                date.numberDay +
-                ", " +
-                date.yearFull}
-            </p>
-            {numberOption === 1 ? (
-              <></>
-            ) : numberOption === 2 ? (
-              <></>
-            ) : (
-              <button
-                onClick={() => switchMenu(1)}
-                className="button_add_reminder"
-              >
-                Add reminder
-              </button>
-            )}
+        <div className="section_container">
+          <div className="section_container--div1">
+            <div className="section_container--div1--button_container">
+              <p>
+                {numberOption === 1
+                  ? "Add reminder - "
+                  : numberOption === 2
+                  ? "Edit reminder - "
+                  : ""}
+                {daysOfWeek[date.number] +
+                  ", " +
+                  months[date.numberMonth] +
+                  ", " +
+                  date.numberDay +
+                  ", " +
+                  date.yearFull}
+              </p>
+              {numberOption === 1 ? (
+                <></>
+              ) : numberOption === 2 ? (
+                <></>
+              ) : (
+                <button
+                  onClick={() => switchMenu(1)}
+                  className="button_add_reminder"
+                >
+                  Add reminder
+                </button>
+              )}
+            </div>
+            <div className="data_container">{seeMEnuOption}</div>
           </div>
-          <div className="data_container">{seeMEnuOption}</div>
-        </div>
-        <div className="section_container--div2">
-          <CalendaryDays
-            setDate={setDate}
-            setChangeDate={setChangeDate}
-            changeDate={changeDate}
-          />
+          <div className="section_container--div2">
+            <CalendaryDays
+              setDate={setDate}
+              setChangeDate={setChangeDate}
+              changeDate={changeDate}
+            />
+          </div>
         </div>
       </section>
       <Toaster position="top-center" reverseOrder={false} />

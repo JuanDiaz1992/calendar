@@ -111,3 +111,9 @@
     background-color: #421F91;
 }
 
+
+@media only screen and (max-width: 1166px), only screen and (max-height: 828px) {
+    .card{
+        min-height:114px ;
+    }
+    }

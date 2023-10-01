@@ -1,8 +1,11 @@
+section{
+    position: relative;
+}
 
 .logo{
     width: 265px;
     position: absolute;
-    top: 80px;
+    top: -60px;
 }
 
 .section_container{
@@ -105,3 +108,29 @@
 .color10 {
     background-color: #BCAAA4;
 }
+
+
+
+/*Mediquerys*/
+
+@media only screen and (max-width: 1166px), only screen and (max-height: 828px) {
+    .section_container{
+        height: 400px;
+        min-height: 500px;
+        width: 837px;
+        border-radius: 30px;
+    }
+    .section_container--div1{
+        min-width: 518px;
+    }
+    .logo{
+        width: 153px;
+        top: -32px;
+    } 
+    .data_container {
+        height: 75%;
+    }
+        
+    }
+
+    
