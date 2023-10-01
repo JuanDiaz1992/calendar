@@ -1,0 +1,10 @@
+.container_img_p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container_img_p p{
+    padding: 0;
+    margin: 0;
+}

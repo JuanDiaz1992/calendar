@@ -1,0 +1,92 @@
+
+
+.calendary_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+.calendary_container--header{
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.calendary_container--header h1{
+    font-weight: 1000;
+    font-size: 80px;
+    padding: 0;
+    margin: 0 0 -10px 0;
+}
+.calendary_container--header h2{
+    font-size: 45px;
+    font-weight:100;
+    padding: 0 ;
+    margin: 0 0 45px 0;
+}
+.days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+}
+
+.day{
+    position: relative;
+    cursor: pointer;
+    padding: 1px;
+    font-weight: 100;
+}
+
+.days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 6px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.days div {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+}
+
+.days_select{
+    background: rgb(255,70,93);
+    background: linear-gradient(87deg, rgba(255,70,93,1) 0%, rgba(188,70,186,1) 100%);
+    padding: 1px;
+    border-radius: 50%;
+}
+
+
+.buttons_navigate--container{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.button_navigate{
+    cursor: pointer;
+}
+
+
+.rights{
+    font-size: 9px;
+}
+
+
+.notification_pot{
+    position: absolute;
+    top: 2px;
+    right: 1px;
+}

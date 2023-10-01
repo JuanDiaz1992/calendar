@@ -1,0 +1,113 @@
+.cards_container{
+    padding: 25px 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+
+}
+
+.card{
+    position: relative;
+    padding: 0 10px;
+    width: 92%;
+    min-height: 140px;
+    border-radius: 16px;
+    -webkit-box-shadow: 0px 0px 28px -3px rgba(209,220,240,1);
+    -moz-box-shadow: 0px 0px 28px -3px rgba(209,220,240,1);
+    box-shadow: 0px 0px 28px -3px rgba(209,220,240,1);
+    display: flex;
+    gap: 5px;
+
+}
+
+.cards_line{
+    width: 50%;
+    height: 90%;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.cards_line_container{
+    display: flex;
+    align-items: center;
+    width: 4%;
+    height: 100%;
+}
+
+.cards_text{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+.cards_text h5{
+    font-size: 14px;
+    color: #797979;
+}
+.cards_text p{
+
+    font-size: 18px;
+    color: #384042;
+}
+.card hr{
+    border-color: #d1dcf078;
+    width: 1px;
+    height: 100%;
+}
+.cards_time{
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock{
+    width: 40px;
+}
+.time{
+    font-size: 34px;
+    color: #797979;
+}
+.button_edit_reminder{
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    background-color: #ffffff00;
+    position: absolute;
+    bottom: -16px;
+    right: -7px;
+}
+
+/*Scrolbar*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 129px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #421F91;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #421F91;
+}
+
+::-moz-scrollbar {
+    width: 6px;
+    height: 129px;
+}
+
+::-moz-scrollbar-thumb {
+    border-radius: 3px;
+}
+
+::-moz-scrollbar-thumb:hover {
+    background-color: #421F91;
+}
+
